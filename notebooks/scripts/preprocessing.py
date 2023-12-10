@@ -1,5 +1,5 @@
-from scripts.ingredient import *
-from scripts.instruction import *
+from scripts.ingredient_parser import *
+from scripts.instruction_parser import *
 from scripts.constants import BASE_WORDS
 import ast
 
