@@ -1,5 +1,5 @@
-from scripts.ingredient import *
-from scripts.instruction import *
+from scripts.ingredient_parser import *
+from scripts.instruction_parser import *
 from scripts.constants import BASE_WORDS
 import ast
 
@@ -54,3 +54,14 @@ def ingredients_dict(nlg, args, instruction_parser: InstructionParser, ingredien
     }
 
     return ingrs, cluster_ingrs
+
+
+def kaggle_dict(kaggle, ingredient_parser: IngredientParser):
+    ingr_proteined = {}
+    for name, protein in zip(kaggle['Descrip'], kaggle['Protein_g']):
+        protein_f = float(protein)
+        # preprocess ingr, 
+        ready_ingr = ingredient_parser.parse_entry(name)
+        ingr_proteined[ready_ingr] = protein_f
+
+    return ingr_proteined
